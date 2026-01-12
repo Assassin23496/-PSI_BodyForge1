@@ -1,0 +1,30 @@
+fastapi==0.115.2
+uvicorn[standard]==0.32.0
+
+# Работа с базой данных
+databases[postgresql]==0.9.0
+SQLAlchemy==2.0.36
+asyncpg==0.30.0
+
+# Планировщик периодических задач
+APScheduler==3.10.4
+
+# Валидация данных и конфигурация
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Пароль можно хешировать в будущем
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+
+
+# Для UUID генерации в postgres
+psycopg2-binary==2.9.10
+
+# CORS, если нужно взаимодействие с фронтом
+starlette==0.40.0
+
+email-validator==2.2.0
+
+python-jose[cryptography]
+python-multipart

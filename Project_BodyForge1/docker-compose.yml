@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  bodyforge_app1:
+    container_name: bodyforge_app1
+    build: .
+    command: uvicorn apka.api.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8001:8000"
+    depends_on:
+      - moja_baza_project1
+    environment:
+      DB_HOST: moja_baza_project1
+      DB_NAME: bodyforge1
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+    volumes:
+      - .:/app
+
+  moja_baza_project1:
+    container_name: moja_baza_project1
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_DB: bodyforge1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - project_bodyforge_postgres_data1:/var/lib/postgresql/data
+
+volumes:
+  project_bodyforge_postgres_data1:
